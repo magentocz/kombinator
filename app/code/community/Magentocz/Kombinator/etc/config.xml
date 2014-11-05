@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!--
+/** 
+* Magento CZ Module
+* 
+* NOTICE OF LICENSE 
+* 
+* This source file is subject to the Open Software License (OSL 3.0) 
+* that is bundled with this package in the file LICENSE.txt. 
+* It is also available through the world-wide-web at this URL: 
+* http://opensource.org/licenses/osl-3.0.php 
+* If you did of the license and are unable to 
+* obtain it through the world-wide-web, please send an email 
+* to magentocz@gmail.com so we can send you a copy immediately. 
+* 
+* @copyright Copyright (c) 2014 Magento CZ (http://www.magento.cz)
+* 
+*/
+-->
+<config>
+    <modules>
+        <Magentocz_Kombinator>
+            <version>1.0.0</version>
+        </Magentocz_Kombinator>
+    </modules>
+    <adminhtml>
+		<layout>
+			<updates>
+				<magentocz_kombinator>
+					<file>magentocz_kombinator.xml</file>
+				</magentocz_kombinator>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <magentocz_kombinator>
+                <class>Magentocz_Kombinator_Model</class>
+                <resourceModel>magentocz_kombinator_mysql4</resourceModel>
+            </magentocz_kombinator>
+            <magentocz_kombinator_mysql4>
+                <class>Magentocz_Kombinator_Model_Mysql4</class>
+                <entities>
+                    <magentocz_kombinator>
+                        <table>magentocz_kombinator</table>
+                    </magentocz_kombinator>
+                </entities>
+            </magentocz_kombinator_mysql4>
+        </models>
+        <resources>
+            <magentocz_kombinator_setup>
+                <setup>
+                    <module>Magentocz_Kombinator</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </magentocz_kombinator_setup>
+            <magentocz_kombinator_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </magentocz_kombinator_write>
+            <magentocz_kombinator_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </magentocz_kombinator_read>
+        </resources>
+        <blocks>
+            <magentocz_kombinator>
+                <class>Magentocz_Kombinator_Block</class>
+            </magentocz_kombinator>            
+			<checkout>
+				<rewrite>
+					<onepage_shipping_method_available>Magentocz_Kombinator_Block_Onepage_Shipping_Method_Available</onepage_shipping_method_available>
+				</rewrite>
+				<rewrite>
+					<onepage_payment_methods>Magentocz_Kombinator_Block_Onepage_Payment_Methods</onepage_payment_methods>
+				</rewrite>
+			</checkout>    	
+        </blocks>
+        <helpers>
+            <magentocz_kombinator>
+                <class>Magentocz_Kombinator_Helper</class>
+            </magentocz_kombinator>
+        </helpers>
+    </global>
+    
+    <adminhtml>       
+        <translate>
+            <modules>
+                <Magentocz_Kombinator>
+                    <files>
+                        <default>Magentocz_Kombinator.csv</default>
+                    </files>
+                </Magentocz_Kombinator>
+            </modules>
+        </translate>
+    </adminhtml>
+ 
+    <frontend>       
+        <translate>
+            <modules>
+                <Magentocz_Kombinator>
+                    <files>
+                        <default>Magentocz_Kombinator.csv</default>
+                    </files>
+                </Magentocz_Kombinator>
+            </modules>
+        </translate>        
+    </frontend> 
+    <default>
+    	<sales>
+    		<magentocz_kombinator>
+    			<enabled>0</enabled>
+    		</magentocz_kombinator>
+    	</sales>
+    </default>
+</config>
